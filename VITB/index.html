@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/809556e1a2.js" crossorigin="anonymous"></script>
+    <title>Mess Menu</title>
+    <!-- <style rel="stylesheet" href="styles.css"></style> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #1f242d;
+            --color: #323946;
+            --text-color: #fff;
+            --main-color: #0ef;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            z-index: 100;
+            margin-top: 5px;
+        }
+
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav .links {
+            list-style-type: none;
+            gap: 10px;
+            margin-right: 3rem;
+        }
+
+        .links li {
+            display: inline-flex;
+            padding: 0px 6px;
+        }
+
+        li,
+        a {
+            padding: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .logo h2 {
+            font-weight: 600;
+            font-size: 25px;
+            margin-left: 3rem;
+            color: var(--text-color);
+            font-size: 24px;
+        }
+
+
+        .logo span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 25px;
+            color: var(--main-color);
+        }
+
+        #menu-icon {
+            display: none;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 627px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            object-fit: fill;
+            position: absolute;
+            animation: slideshow 15s infinite;
+            top: 0;
+            opacity: 0;
+        }
+
+        .image-container img:nth-child(1) {
+            height: 100%;
+            animation-delay: 0s;
+            z-index: 2;
+        }
+
+        .image-container img:nth-child(2) {
+            height: 100%;
+            animation-delay: 5s;
+            z-index: 1;
+        }
+
+        .image-container img:nth-child(3) {
+            height: 100%;
+            animation-delay: 10s;
+            z-index: 1;
+        }
+
+        @keyframes slideshow {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            33.33% {
+                opacity: 1;
+            }
+
+            43.33% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .branches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 25px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .cse,
+        .mechanical,
+        .electrical {
+            flex-basis: 50%;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .button1 {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            background-color: var(--color);
+            color: var(--text-color);
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button1:not(:last-child) {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .button1:nth-child(2n) {
+            margin-left: 10px;
+        }
+
+        .button1:hover {
+            background-color: var(--color);
+        }
+
+        .foot {
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .footerContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* padding: 20px; */
+        }
+
+        .footerContainer h4 {
+            font-size: 2rem;
+            font-weight: bolder;
+            margin-bottom: 5px;
+            ;
+        }
+
+        .footer-nav a {
+            font-size: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            /* margin-bottom: 10px; */
+        }
+
+        .social-links a {
+            text-decoration: none;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .social-links a i {
+            font-size: 35px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .footer-nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 0;
+        }
+
+        .footer-nav ul li {
+            margin: 0 5px;
+        }
+
+        .footer-nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            background-color: var(--color);
+            color: var(--text-color);
+            padding: 10px;
+            text-align: center;
+            /* margin-top: 20px; */
+        }
+
+        #cpy {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        #maintain {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        #maintain a {
+            color: var(--text-color);
+        }
+
+        #maintain a:hover {
+            color: var(--text-color);
+        }
+
+        /* Media Queries */
+
+        @media (max-width: 1200px) {
+            .header {
+                font-size: 18px;
+            }
+
+            .logo h2 {
+                font-size: 20px;
+            }
+
+            .image-container {
+                margin-top: 80px;
+                height: 500px;
+            }
+
+            .branches .cse,
+            .branches .mechanical,
+            .branches .electrical {
+                flex-basis: 100%;
+            }
+
+            .logo h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header {
+                font-size: 16px;
+            }
+
+            .image-container {
+                margin-top: 60px;
+                height: 450px;
+            }
+
+            .logo h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo h2 {
+                font-size: 20px;
+                margin-top: 10px;
+                margin-left: 20px;
+                text-align: center;
+            }
+
+            .logo span {
+                margin-left: 10px;
+            }
+
+            #menu-icon {
+                display: block;
+                font-size: 24px;
+                color: var(--text-color);
+                cursor: pointer;
+                margin-right: 20px;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem;
+                background: var(--bg-color);
+                border-top: .1rem solid rgba(0, 0, 0, .2);
+                box-shadow: 0.5rem 1rem rgba(0, 0, 0, 0.1);
+                display: none;
+                transition: all 0.3s ease-in-out;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav.active .links {
+                flex-direction: column;
+                align-items: flex-start;
+                z-index: 1;
+            }
+
+            nav.active .links li {
+                margin: 10px 0;
+                display: block;
+            }
+
+            nav.active .links li a {
+                opacity: 1;
+                transform: none;
+                transition-delay: 0s;
+            }
+
+
+            nav.active {
+                display: block;
+            }
+
+            #menu-icon:focus {
+                outline: none;
+            }
+
+            .image-container img {
+                margin-top: 40px;
+                height: 400px;
+            }
+
+            .branches .cse,
+            .branches .mechanical,
+            .branches .electrical {
+                flex-basis: 100%;
+            }
+
+            .links ul li {
+                display: block;
+            }
+
+            .logo h2 {
+                font-size: 24px;
+            }
+        }
+
+
+
+
+        @media (max-width: 600px) {
+            .header {
+                font-size: 14px;
+            }
+
+            .image-container img {
+                margin-top: 30px;
+                height: 350px;
+            }
+
+            .button1 {
+                font-size: 16px;
+            }
+
+            .logo h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .header {
+                font-size: 12px;
+            }
+
+            .image-container img {
+                margin-top: 20px;
+                height: 300px;
+            }
+
+            .button1 {
+                font-size: 14px;
+            }
+
+            .logo h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 365px) {
+            .header {
+                font-size: 10px;
+            }
+
+            .image-container img {
+                margin-top: 20px;
+                height: 250px;
+            }
+
+            .button1 {
+                font-size: 12px;
+            }
+
+            .logo h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <h2>Mess<span>Menu</span></h2>
+        </div>
+        <nav>
+            <ul class="links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="hostel_1.html" target="_blank">Boy's Hostel 1</a></li>
+                <li><a href="hostel_2&3.html" target="_blank">Boy's Hostel 2&3</a></li>
+                <li><a href="girls_hostel.html" target="_blank">Girl's Hostel</a></li>
+                <li><a href="hostel__canteen.html" target="_blank">Hostel Canteen</a></li>
+            </ul>
+        </nav>
+        <i class="fa fa-bars" id="menu-icon"></i>
+    </div>
+
+
+    <div class="image-container">
+        <img src="vitbpl.jpg" alt="">
+        <img class="img-1" src="image1.jpg" alt="">
+        <img src="imag2.jpg" alt="">
+    </div>
+
+
+    <div class="section">
+        <div class="branches">
+            <div class="cse">
+                <a href="hostel_1.html" target="_blank"><button class="button1">Boys Hostel 1 CRCL MESS</button></a>
+            </div>
+            <div class="mechanical">
+                <a href="hostel_2&3.html" target="_blank"><button class="button1">Boys Hostel 2 and 3 Mayuri
+                        MESS</button></a>
+            </div>
+            <div class="electrical">
+                <a href="girls_hostel.html" target="_blank"><button class="button1">Girls Hostel CRCL MESS</button></a>
+            </div>
+            <div class="electrical">
+                <a href="hostel__canteen.html" target="_blank"><button class="button1">Hostel Canteen</button></a>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="foot">
+        <div class="footer-bottom">
+            <h2>Follow me</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com/jainvedant1121?mibextid=ZbWKwL" target="_blank"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/jainvedant1005?igshid=ZDdkNTZiNTM=" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/vedant-jain-1191ab216" target="_blank"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/vedantjain1112" target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <p id="cpy">Copy right <sup id="super">&copy;</sup> 2023</p>
+            <p id="maintain">Developed and maintained by &#64;<a href="https://jainvedant1121.netlify.app/">Vedant</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Get the hamburger menu icon element
+        const menuIcon = document.getElementById('menu-icon');
+
+        // Get the navigation bar element
+        const navBar = document.querySelector('nav');
+
+        // Add a click event listener to the menu icon
+        menuIcon.addEventListener('click', function () {
+            // Toggle the 'active' class on the navigation bar
+            navBar.classList.toggle('active');
+        });
+
+        // Close the navigation bar when a link is clicked
+        const navLinks = document.querySelectorAll('.links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                navBar.classList.remove('active');
+            });
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/809556e1a2.js" crossorigin="anonymous"></script>
+    <title>Mess Menu</title>
+    <!-- <style rel="stylesheet" href="styles.css"></style> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #1f242d;
+            --color: #323946;
+            --text-color: #fff;
+            --main-color: #0ef;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            z-index: 100;
+            margin-top: 5px;
+        }
+
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav .links {
+            list-style-type: none;
+            gap: 10px;
+            margin-right: 3rem;
+        }
+
+        .links li {
+            display: inline-flex;
+            padding: 0px 6px;
+        }
+
+        li,
+        a {
+            padding: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .logo h2 {
+            font-weight: 600;
+            font-size: 25px;
+            margin-left: 3rem;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            font-weight: 600;
+            font-size: 25px;
+            color: var(--main-color);
+        }
+
+        #menu-icon {
+            display: none;
+        }
+
+        #selection {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 200px;
+            margin-bottom: 20px;
+        }
+
+        #menu {
+            display: none;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #menu h2,
+        #menu h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .food-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .food-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .food-name {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .food-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        select {
+            width: 300px;
+            padding: 8px;
+            border: 2px solid var(--main-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+        }
+
+        label {
+            margin-top: 4px;
+            margin-right: 5px;
+        }
+
+
+        .containerr {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 80px;
+        }
+
+        .containerr h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--bg-color);
+            margin-bottom: 20px;
+        }
+
+
+        .foot {
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin-top: 238px;
+        }
+
+        .footerContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* padding: 20px; */
+        }
+
+        .footerContainer h4 {
+            font-size: 2rem;
+            font-weight: bolder;
+            margin-bottom: 5px;
+            ;
+        }
+
+        .footer-nav a {
+            font-size: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            /* margin-bottom: 10px; */
+        }
+
+        .social-links a {
+            text-decoration: none;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .social-links a i {
+            font-size: 35px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .footer-nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 0;
+        }
+
+        .footer-nav ul li {
+            margin: 0 5px;
+        }
+
+        .footer-nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            background-color: var(--color);
+            color: var(--text-color);
+            padding: 10px;
+            text-align: center;
+            /* margin-top: 20px; */
+        }
+
+        #cpy {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        #maintain {
+            font-size: 25px;
+            margin-bottom: 0;
+        }
+
+        #maintain a {
+            color: var(--text-color);
+        }
+
+        #maintain a:hover {
+            color: var(--text-color);
+        }
+
+        @media (max-width: 1200px) {
+            #selection {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                margin: 0 auto;
+                font-size: 1.5rem;
+                margin-bottom: 60px;
+                width: 80%;
+            }
+
+            #menu {
+                padding: 20px;
+            }
+
+            .foot {
+                margin-top: 180px;
+            }
+        }
+
+
+        @media (max-width: 900px) {
+            #selection {
+                gap: 125px;
+            }
+
+            .foot {
+                margin-top: 140px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo h2 {
+                margin-top: 10px;
+                margin-left: 20px;
+                text-align: center;
+            }
+
+            .logo span {
+                margin-left: 10px;
+            }
+
+            #menu-icon {
+                display: block;
+                font-size: 24px;
+                color: var(--text-color);
+                cursor: pointer;
+                margin-right: 20px;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem;
+                background: var(--bg-color);
+                border-top: .1rem solid rgba(0, 0, 0, .2);
+                box-shadow: 0.5rem 1rem rgba(0, 0, 0, 0.1);
+                display: none;
+                transition: all 0.3s ease-in-out;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav.active .links {
+                flex-direction: column;
+                align-items: flex-start;
+                z-index: 1;
+            }
+
+            nav.active .links li {
+                margin: 10px 0;
+                display: block;
+            }
+
+            nav.active .links li a {
+                opacity: 1;
+                transform: none;
+                transition-delay: 0s;
+            }
+
+
+            nav.active {
+                display: block;
+            }
+
+            #menu-icon:focus {
+                outline: none;
+            }
+
+
+            .links ul li {
+                display: block;
+            }
+
+            #selection {
+                flex-direction: column;
+                gap: 40px;
+                margin-bottom: 30px;
+            }
+
+            #menu {
+                padding: 15px;
+            }
+
+            .foot {
+                margin-top: 100px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #selection {
+                flex-direction: column;
+                gap: 80px;
+                margin-bottom: 40px;
+            }
+
+            #menu {
+                padding: 10px;
+            }
+
+            .foot {
+                margin-top: 80px;
+            }
+
+            .footerContainer h4 {
+                font-size: 1.5rem;
+            }
+
+            .social-links a i {
+                font-size: 25px;
+            }
+
+            #cpy,
+            #maintain {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            #selection {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                margin-bottom: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 80%;
+                margin-top: 80px;
+                transform: translateY(-50%);
+            }
+
+            #menu {
+                padding: 5px;
+            }
+
+            .foot {
+                margin-top: 60px;
+            }
+
+            .footerContainer h4 {
+                font-size: 1.2rem;
+            }
+
+            .footer-nav a {
+                font-size: 20px;
+            }
+
+            .social-links a i {
+                font-size: 20px;
+            }
+
+            #cpy,
+            #maintain {
+                font-size: 18px;
+            }
+        }
+
+
+        @media (max-width: 365px) {
+            #selection {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                margin-bottom: 60px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 80%;
+                margin-top: 80px;
+                transform: translateY(-50%);
+            }
+
+
+            #menu {
+                padding: 3px;
+            }
+
+            .foot {
+                margin-top: 40px;
+            }
+
+            .footerContainer h4 {
+                font-size: 1rem;
+            }
+
+            .footer-nav a {
+                font-size: 18px;
+            }
+
+            .social-links a i {
+                font-size: 18px;
+            }
+
+            #cpy,
+            #maintain {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (device-width: 540px) and (device-height: 720px) and (-webkit-min-device-pixel-ratio: 1.5),
+        screen and (device-width: 720px) and (device-height: 540px) and (-webkit-min-device-pixel-ratio: 1.5) {
+
+
+            #selection {
+                margin: 20px auto;
+                padding: 20px;
+                border-radius: 8px;
+                width: 80%;
+            }
+
+            #selection select {
+                width: 200px;
+                padding: 10px;
+                border-radius: 4px;
+            }
+
+        }
+
+        @media screen and (device-width: 720px) and (device-height: 1280px) and (-webkit-min-device-pixel-ratio: 1.5),
+        screen and (device-width: 1280px) and (device-height: 720px) and (-webkit-min-device-pixel-ratio: 1.5) {
+
+
+            #selection {
+                margin: 20px auto;
+                padding: 20px;
+                border-radius: 8px;
+                width: 80%;
+            }
+        }
+    </style>
+
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <h2>Mess<span>Menu</span></h2>
+        </div>
+        <nav>
+            <ul class="links">
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="hostel_1.html">Boy's Hostel 1</a></li>
+                <li><a href="hostel_2&3.html" target="_blank">Boy's Hostel 2&3</a></li>
+                <li><a href="girls_hostel.html" target="_blank">Girl's Hostel</a></li>
+                <li><a href="hostel_canteen.html" target="_blank">Hostel Canteen</a></li>
+            </ul>
+        </nav>
+        <i class="fa fa-bars" id="menu-icon"></i>
+    </div>
+
+    <div class="containerr">
+        <h1>Mess Menu</h1>
+        <div id="selection">
+            <div class="row">
+                <label for="days" style="color: var(--bg-color); font-weight: 600;">Select Day:</label>
+                <select id="days">
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                    <option value="sunday">Sunday</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="meals" style="color: var(--bg-color); font-weight: 600;">Select Meal:</label>
+                <select id="meals">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="snacks">Snacks</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <button onclick="showMenu()"
+            style="margin-bottom: 40px; background-color: var(--bg-color); color: var(--text-color); border: 3px solid var(--main-color); border-radius: 8px;">Show
+            Menu</button>
+    </div>
+    <div id="menu">
+        <h2 id="day"></h2>
+        <h3 id="meal"></h3>
+        <div id="food-items" class="food-container" style="color:rgb(30, 27, 27);"></div>
+    </div>
+
+    <footer class="foot">
+        <div class="footer-bottom">
+            <h2>Follow me</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com/jainvedant1121?mibextid=ZbWKwL" target="_blank"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/jainvedant1005?igshid=ZDdkNTZiNTM=" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/vedant-jain-1191ab216" target="_blank"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/vedantjain1112" target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <p id="cpy">Copy right <sup id="super">&copy;</sup> 2023</p>
+            <p id="maintain">Developed and maintained by &#64;<a href="https://jainvedant1121.netlify.app/">Vedant</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+        // Get the hamburger menu icon element
+        const menuIcon = document.getElementById('menu-icon');
+
+        // Get the navigation bar element
+        const navBar = document.querySelector('nav');
+
+        // Add a click event listener to the menu icon
+        menuIcon.addEventListener('click', function () {
+            // Toggle the 'active' class on the navigation bar
+            navBar.classList.toggle('active');
+        });
+
+        // Close the navigation bar when a link is clicked
+        const navLinks = document.querySelectorAll('.links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                navBar.classList.remove('active');
+            });
+        });
+
+
+        function showMenu() {
+            var menu = document.getElementById("menu");
+
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                var day = document.getElementById("days").value;
+                var meal = document.getElementById("meals").value;
+                var items = getMenu(day, meal);
+
+                document.getElementById("day").textContent = day.charAt(0).toUpperCase() + day.slice(1);
+                document.getElementById("meal").textContent = meal.charAt(0).toUpperCase() + meal.slice(1);
+
+                var itemList = document.getElementById("food-items");
+                itemList.innerHTML = "";
+
+                for (var i = 0; i < items.length; i++) {
+                    var foodItem = document.createElement("div");
+                    foodItem.className = "food-item";
+                    var image = document.createElement("img");
+                    image.src = getImageUrl(items[i]);
+                    image.alt = items[i];
+                    image.className = "food-image";
+                    var name = document.createElement("p");
+                    name.className = "food-name";
+                    name.textContent = items[i];
+                    name.style.color = "rgb(30, 27, 27)";
+
+                    foodItem.appendChild(image);
+                    foodItem.appendChild(name);
+                    itemList.appendChild(foodItem);
+                }
+
+                menu.style.display = "block";
+            }
+        }
+
+        function getMenu(day, meal) {
+            var menu = {
+                monday: {
+                    breakfast: ["Idli", "Medu Vada", "Chutney,Sambhar", "Banana/Fruit Salad", "Bread", "Butter/Jam", "Milk/Tea/Coffee"],
+                    lunch: ["Salad", "Roti", "Rajma Gharwala", "Jeera Rice", "Aloo Pepper Fry", "Rice", "Lemon Juice", "Koottu", "Rasam", "Juice"],
+                    snacks: ["Vada Pav", "Milk/Tea/Coffee"],
+                    dinner: ["Roti", "Kashmiri Pulao", "Egg Bhurji Masala", "Plain Dal", "Rice", "Rasam", "Pickle (Aachar)"]
+                },
+
+                tuesday: {
+                    breakfast: ["Veg Paratha/Poori", "Veg Sabji", "Banana/Fruit Salad", "Bread", "Butter/Jam", "Milk/Tea/Coffee"],
+                    lunch: ["Salad", "Poori", "Chana Masala", "Plain Rice", "Dal Tadka", "Sambhar", "Rasam", "Carrot Beans Poriyal", "Curd"],
+                    snacks: ["Bhel/Chana Sundal", "Sauce", "Milk/Tea/Coffee"],
+                    dinner: ["Roti", "Kuska", "Aloo Meal Maker Sabji", "Rasam", "Pickle (Aachar)", "Halwa", "Fruit Custard"]
+                },
+
+                wednesday: {
+                    breakfast: ["Uttapam", "Sambhar", "Kara Chutney", "Bread", "Butter/Jam", "Milk/Tea/Coffee"],
+                    lunch: ["Salad", "Roti", "Aloo Corn", "Rice", "Mix Dal", "Palak Kootu Sabji", "Rasam", "Curd Rice", "Payasam"],
+                    snacks: ["Pani Puri", "Milk/Tea/Coffee"],
+                    dinner: ["Roti", "Rice", "Plain Dal", "Capsicum Onion Chicken", "Butter Paneer", "Rasam", "Pickle (Aachar)"]
+                },
+
+                thursday: {
+                    breakfast: ["Pongal/Poha", "Jalebi", "Banana/Fruit Salad", "Chutney", "Bread", "Butter/Jam", "Milk/Tea/Coffee"],
+                    lunch: ["Salad", "Roti", "Navratan Korma", "Tomato Dal (Andhra Style)", "Veg Pulao", "Plain Rice", "Drumstick,Bagan,Poriyal", "Rasam", "Pickle (Aachar)", "Butter Milk"],
+                    snacks: ["Sweet Corn", "Salad/Dahi Vada", "Milk/Tea/Coffee"],
+                    dinner: ["Roti", "Green Peas Masala", "Egg Masala", "Rice", "Dal Fry", "Rasam", "Pickle (Aachar)"]
+                },
+
+                friday: {
+                    breakfast: ["Dosa", "Sambhar", "Green Chutney", "Bread", "Butter/Jam", "Milk/Tea/Coffee"],
+                    lunch: ["Raita", "Veg Biryani", "Roti", "Dalcha", "Plain Rice", "Tomato Thokku", "Rasam", "Fryums"],
+                    snacks: ["Cake/Pastries", "Milk/Tea/Coffee"],
+                    dinner: ["Roti", "Rice", "Dal Tadka", "Butter Chicken", "Kadhai Paneer", "Rasam", "Pickle (Aachar)"]
+                },
+
+                saturday: {
+                    breakfast: ["Bhatura", "Chole Masala", "Banana/Fruit Salad", "Bread", "Butter/Jam", "Milk/Tea/Coffee"],
+                    lunch: ["Salad", "Roti", "Chana Dal", "Khichdi/Tarmarind Rice", "Aloo Chokha", "Rice", "Vegetable Sambhar", "Raw Banana Poriyal", "Rasam"],
+                    snacks: ["Samosa", "Milk/Tea/Coffee"],
+                    dinner: ["Chapati", "Fried Rice", "Dal Fry", "Gobi Manchurian", "Rice", "Rasam"]
+                },
+
+                sunday: {
+                    breakfast: ["Masala Dosa", "Sambhar,Chutney", "Banana/Fruit Salad", "Bread", "Butter/Jam", "Milk/Tea/Coffee"],
+                    lunch: ["Onion Cucumber Raita", "Roti", "Chicken Biryani", "Paneer Biryani", "Masala Dal", "Mint Lemon Juice"],
+                    snacks: ["Dhokla", "Pasta", "Green Chutney", "Milk/Tea/Coffee"],
+                    dinner: ["Chapati", "Rice", "Tinda Aloo Sabji/Aloo Patta Gobi", "Dal Makhani", "Rasam", "Gulab Jamun"]
+                },
+
+
+            };
+
+            return menu[day][meal];
+        }
+
+        function getImageUrl(foodItem) {
+            var imageUrls = {
+                "Idli": "https://tse1.mm.bing.net/th?id=OIP.5LLCEcWF40CIZkI5z0CQLQHaHz&pid=Api&P=0&h=180",
+                "Medu Vada": "https://tse2.mm.bing.net/th?id=OIP.o9BkLH4f-ys3G_KkX53_ZQHaEx&pid=Api&P=0&h=180",
+                "Chutney,Sambhar": "https://www.bharatmasala.in/wp-content/uploads/2021/06/2710181540666677.png",
+                "Banana/Fruit Salad": "https://tse1.mm.bing.net/th?id=OIP.Qr_cYZdn0QBIE5egqL4BuwHaDt&pid=Api&P=0&h=180",
+                "Bread": "https://tse4.mm.bing.net/th?id=OIP.b19TMs1UukGQIqSIKTXb1QHaFQ&pid=Api&P=0&h=180",
+                "Butter/Jam": "https://tse4.mm.bing.net/th?id=OIP.QaV9gjnuTW5biK9tf2m46wHaEK&pid=Api&P=0&h=180",
+                "Milk/Tea/Coffee": "https://tse2.mm.bing.net/th?id=OIP.cPbYWOlyjr4RK__yM-qRjQHaHa&pid=Api&P=0&h=180",
+                "Salad": "https://tse4.mm.bing.net/th?id=OIP.2LT7l2oEDjsqW_SCNg4UEQHaFE&pid=Api&P=0&h=180",
+                "Roti": "https://tse1.mm.bing.net/th?id=OIP.jTmn5nAoQkrGUoVvLnMudQHaE8&pid=Api&P=0&h=180",
+                "Rajma Gharwala": "https://tse3.mm.bing.net/th?id=OIP.8rpYttVfEbqmuMgNY_xFqwHaFj&pid=Api&P=0&h=180",
+                "Jeera Rice": "https://tse4.mm.bing.net/th?id=OIP.wK096Ib7jgp7Xv2h2DTLZgHaFP&pid=Api&P=0&h=180",
+                "Aloo Pepper Fry": "https://i1.wp.com/www.antoskitchen.com/wp-content/uploads/2017/02/DSC2354.jpg?resize=1024%2C902&ssl=1",
+                "Rice": "https://tse4.mm.bing.net/th?id=OIP.K3WACs1HrLRKWSWziX02vQHaHa&pid=Api&P=0&h=180",
+                "Lemon Juice": "https://tse3.mm.bing.net/th?id=OIP.jLG_XAWGNNS3Iy0U7oJDjwHaIK&pid=Api&P=0&h=180",
+                "Koottu": "https://tse2.mm.bing.net/th?id=OIP.rl26iHDA7y-Lb7B9kC6IkQHaEK&pid=Api&P=0&h=180",
+                "Rasam": "https://tse4.mm.bing.net/th?id=OIP.XoHZdmy3dzALYV_GYEo8HgHaE7&pid=Api&P=0&h=180",
+                "Juice": "https://tse2.mm.bing.net/th?id=OIP.lUh6isnpTiqIR5OF0qBLSAHaHa&pid=Api&P=0&h=180",
+                "Vada Pav": "https://tse3.mm.bing.net/th?id=OIP.Vr2CMTtozG-XwdK-WMrAqAHaE7&pid=Api&P=0&h=180",
+                "Milk/Tea/Coffee": "https://tse2.mm.bing.net/th?id=OIP.cPbYWOlyjr4RK__yM-qRjQHaHa&pid=Api&P=0&h=180",
+                "Roti": "https://tse1.mm.bing.net/th?id=OIP.jTmn5nAoQkrGUoVvLnMudQHaE8&pid=Api&P=0&h=180",
+                "Kashmiri Pulao": "https://tse4.mm.bing.net/th?id=OIP.R_S-y60LzyvsqUyKb3aknAHaE7&pid=Api&P=0&h=180",
+                "Egg Bhurji Masala": "https://tse2.mm.bing.net/th?id=OIP.moy31HQ9hd7rm4_nNFi1LwHaE6&pid=Api&P=0&h=180",
+                "Plain Dal": "https://tse1.mm.bing.net/th?id=OIP.Jj3iRcALz32dDXashVHD-QHaFj&pid=Api&P=0&h=180",
+                "Rasam": "https://tse4.mm.bing.net/th?id=OIP.XoHZdmy3dzALYV_GYEo8HgHaE7&pid=Api&P=0&h=180",
+                "Pickle (Aachar)": "https://tse3.mm.bing.net/th?id=OIP.y_Efw-v56J8MSvBwDjrRqAHaE9&pid=Api&P=0&h=180",
+                "Veg Paratha/Poori": "https://tse2.mm.bing.net/th?id=OIP.ZKJXbstUrgtKSQxV8DTnpAHaEK&pid=Api&P=0&h=180",
+                "Veg Sabji": "https://tse1.mm.bing.net/th?id=OIP.o5lVF500U0sAjCoPXFRBtQHaEK&pid=Api&P=0&h=180",
+                "Banana/Fruit Salad": "https://tse1.mm.bing.net/th?id=OIP.Qr_cYZdn0QBIE5egqL4BuwHaDt&pid=Api&P=0&h=180",
+                "Bread": "https://tse4.mm.bing.net/th?id=OIP.b19TMs1UukGQIqSIKTXb1QHaFQ&pid=Api&P=0&h=180",
+                "Butter/Jam": "https://tse4.mm.bing.net/th?id=OIP.QaV9gjnuTW5biK9tf2m46wHaEK&pid=Api&P=0&h=180",
+                "Milk/Tea/Coffee": "https://tse2.mm.bing.net/th?id=OIP.cPbYWOlyjr4RK__yM-qRjQHaHa&pid=Api&P=0&h=180",
+                "Salad": "https://tse4.mm.bing.net/th?id=OIP.2LT7l2oEDjsqW_SCNg4UEQHaFE&pid=Api&P=0&h=180",
+                "Poori": "https://tse4.mm.bing.net/th?id=OIP.FTP3DL5CvdZkQE_hjH5BDQHaIP&pid=Api&P=0&h=180",
+                "Chana Masala": "https://tse4.mm.bing.net/th?id=OIP.pZv3OYwM8djB6pfApcoOZQHaE7&pid=Api&P=0&h=180",
+                "Plain Rice": "https://tse4.mm.bing.net/th?id=OIP.K3WACs1HrLRKWSWziX02vQHaHa&pid=Api&P=0&h=180",
+                "Dal Tadka": "https://tse3.mm.bing.net/th?id=OIP.ArMeZRFWelPozqpW8s9FBwHaF8&pid=Api&P=0&h=180",
+                "Sambhar": "https://www.bharatmasala.in/wp-content/uploads/2021/06/2710181540666677.png",
+                "Carrot Beans Poriyal": "https://asmallbite.com/wp-content/uploads/2016/03/Carrot-Beans-Poriyal-3-768x637.jpg",
+                "Curd": "https://tse4.mm.bing.net/th?id=OIP.FwD5Z44SmxCYfY7cVg52xQHaGc&pid=Api&P=0&h=180",
+                "Bhel/Chana Sundal": "https://tse2.mm.bing.net/th?id=OIP.PHWNww1mZWE7ErxtkJUt2gHaD4&pid=Api&P=0&h=180",
+                "Sauce": "https://i2.wp.com/dishesanddustbunnies.com/wp-content/uploads/2017/06/Sweet-Sour-Sauce-1.jpg?resize=2500%2C1667&ssl=1",
+                "Milk/Tea/Coffee": "https://tse2.mm.bing.net/th?id=OIP.cPbYWOlyjr4RK__yM-qRjQHaHa&pid=Api&P=0&h=180",
+                "Roti": "https://tse1.mm.bing.net/th?id=OIP.jTmn5nAoQkrGUoVvLnMudQHaE8&pid=Api&P=0&h=180",
+                "Kuska": "https://tse4.mm.bing.net/th?id=OIP.amlUt37OILTiqTIAe73zFQHaEL&pid=Api&P=0&h=180",
+                "Aloo Meal Maker Sabji": "https://tse1.mm.bing.net/th?id=OIP.HiS-pEphQzaAOPqnWSEkxwHaE4&pid=Api&P=0&h=180",
+                "Rasam": "https://tse4.mm.bing.net/th?id=OIP.XoHZdmy3dzALYV_GYEo8HgHaE7&pid=Api&P=0&h=180",
+                "Pickle (Aachar)": "https://tse3.mm.bing.net/th?id=OIP.y_Efw-v56J8MSvBwDjrRqAHaE9&pid=Api&P=0&h=180",
+                "Halwa": "https://i.ytimg.com/vi/Zx-9YQRxVIw/maxresdefault.jpg",
+                "Fruit Custard": "https://tse2.mm.bing.net/th?id=OIP.EdczvuG9pFZH866nh4OhlwHaGN&pid=Api&P=0&h=180",
+                "Pani Puri": "https://tse1.mm.bing.net/th?id=OIP.TxJY2wfY44_t9IMqSjCCOwHaE9&pid=Api&P=0&h=180",
+                "Capsicum Onion Chicken": "https://www.masala.tv/wp-content/uploads/2015/07/Capsicum-Chicken-Recipe.jpg",
+                "Butter Paneer": "https://tse3.mm.bing.net/th?id=OIP.SB1Qyotq9llFTQ59twHtjQHaHa&pid=Api&P=0&h=180",
+                "Aloo Corn": "https://i.pinimg.com/originals/5f/29/d0/5f29d0164a4a33dc6074ceed3a15802f.jpg",
+                "Mix Dal": "https://tse4.mm.bing.net/th?id=OIP.MXNORv2ZolYRi7Loui9akwHaHa&pid=Api&P=0&h=180",
+                "Palak Kootu Sabji": "https://i.pinimg.com/originals/e0/85/ae/e085ae84492e3e662b554f4d34e78058.jpg",
+                "Curd Rice": "https://recipes.timesofindia.com/photo/61739922.cms",
+                "Payasam": "https://media.cntraveller.in/wp-content/uploads/2020/08/payasam-1366x768.jpg",
+                "Uttapam": "https://tse3.mm.bing.net/th?id=OIP.Rgu5ayXBzVvhYOVjh9NRmAHaFK&pid=Api&P=0&h=180",
+                "Kara Chutney": "https://tse2.mm.bing.net/th?id=OIP.lHFt2EIc68mY9_E-xuckvAHaHa&pid=Api&P=0&h=180",
+                "Pongal/Poha": "https://tse1.mm.bing.net/th?id=OIP.2eCPGwUMweftS4SGFJOFdAHaEK&pid=Api&P=0&h=180",
+                "Jalebi": "https://tse3.mm.bing.net/th?id=OIP.6_AMDfjQM-tFWcY-qe-egQHaHa&pid=Api&P=0&h=180",
+                "Chutney": "https://4.bp.blogspot.com/-0gWQfANIgcs/WHGIM5z9e9I/AAAAAAAASNk/aYORnTyvFlgHvyGB_vjjdJ_uSHPbaiAugCLcB/w1200-h630-p-k-no-nu/Locquat%2BChutney%2B-%2B3.jpg",
+                "Navratan Korma": "https://tse4.mm.bing.net/th?id=OIP.CBPxcNkBw_I389Gyjn5sJAHaFg&pid=Api&P=0&h=180",
+                "Tomato Dal (Andhra Style)": "https://i2.wp.com/www.cookingfromheart.com/wp-content/uploads/2015/09/ch_dsc_0256_9.jpg?resize=1470%2C680",
+                "Veg Pulao": "https://tse2.mm.bing.net/th?id=OIP.9HPyWxkrVTyFiESuJpfh8AHaEK&pid=Api&P=0&h=180",
+                "Drumstick,Bagan,Poriyal": "https://3.bp.blogspot.com/-UV_WGCyVZfE/U-1OxkuT1gI/AAAAAAAAEs0/FEFxaNyiJ7M/s1600/Drumstick%2BPoriyal%2BJPEG.jpg",
+                "Butter Milk": "https://tse2.mm.bing.net/th?id=OIP.pE8fuIBBejMwyGonGvAU6wHaE8&pid=Api&P=0&h=180",
+                "Sweet Corn": "https://tse2.mm.bing.net/th?id=OIP.c6PuffBxj3hLCTyfCDaDrQHaFj&pid=Api&P=0&h=180",
+                "Salad/Dahi Vada": "https://tse3.mm.bing.net/th?id=OIP.PO3AFS0-1-zPuhgin07mdAHaE7&pid=Api&P=0&h=180",
+                "Green Peas Masala": "https://tse1.mm.bing.net/th?id=OIP.eiPuOWa5Cbi6KvNocNvMfgHaGV&pid=Api&P=0&h=180",
+                "Egg Masala": "https://tse1.mm.bing.net/th?id=OIP.Dx7XyY1fNoNoPGN3ZQhpBAAAAA&pid=Api&P=0&h=180",
+                "Dal Fry": "https://tse2.mm.bing.net/th?id=OIP.DKc5vy3TU-p0GQXEUIQEFQHaGJ&pid=Api&P=0&h=180",
+                "Dosa": "https://tse2.mm.bing.net/th?id=OIP.opVQtIwX4LFVUs2ELeKpPQHaEo&pid=Api&P=0&h=180",
+                "Green Chutney": "https://tse2.mm.bing.net/th?id=OIP.rDPUZHQ4L5h2WET8kLa6tQHaKY&pid=Api&P=0&h=180",
+                "Raita": "https://tse3.mm.bing.net/th?id=OIP.jl2OiT5jaDaKCaUF9KfhIQHaEK&pid=Api&P=0&h=180",
+                "Veg Biryani": "https://tse3.mm.bing.net/th?id=OIP.rUprSy-Tu_ru7GftGXSI-wHaE8&pid=Api&P=0&h=180",
+                "Dalcha": "https://tse2.mm.bing.net/th?id=OIP.XFSyxrDRCWGD01JHkioTKgHaE4&pid=Api&P=0&h=180",
+                "Tomato Thokku": "https://tse1.mm.bing.net/th?id=OIP.Sfe6Tq9jDXQFauiiIw5yFgHaHa&pid=Api&P=0&h=180",
+                "Fryums": "https://tse1.mm.bing.net/th?id=OIP.TMlzX0MXRM9axYuFiBD8SwHaEL&pid=Api&P=0&h=180",
+                "Cake/Pastries": "https://tse4.mm.bing.net/th?id=OIP.XZmgDPJC-SlK8FOXnQyZEQHaFc&pid=Api&P=0&h=180",
+                "Butter Chicken": "https://tse1.mm.bing.net/th?id=OIP.-yXMEFxS3mn_3hU1QHfdlAHaE-&pid=Api&P=0&h=180",
+                "Kadhai Paneer": "https://tse4.mm.bing.net/th?id=OIP.FXqSV1UDRXud3U1fMBPmLAHaHa&pid=Api&P=0&h=180",
+                "Bhatura": "https://tse3.mm.bing.net/th?id=OIP.m2TsGNbgzWBNQ7O4kuigHAHaEq&pid=Api&P=0&h=180",
+                "Chole Masala": "https://tse2.mm.bing.net/th?id=OIP.Ksfgy_n4uOfagVQd5MB9bQHaGQ&pid=Api&P=0&h=180",
+                "Chana Dal": "https://tse4.mm.bing.net/th?id=OIP.bcoXT4uABsf2TuGvxlG0rAHaHa&pid=Api&P=0&h=180",
+                "Khichdi/Tarmarind Rice": "https://tse2.mm.bing.net/th?id=OIP.VFp_TkpZTefSejYXw7d0eAHaFj&pid=Api&P=0&h=180",
+                "Aloo Chokha": "https://tse2.mm.bing.net/th?id=OIP.N1y4HTlVzlih28p5vLiuSgHaD4&pid=Api&P=0&h=180",
+                "Vegetable Sambhar": "https://tse3.mm.bing.net/th?id=OIP.xfCjZlNMptCC9gUs-b3p-gHaJ3&pid=Api&P=0&h=180",
+                "Raw Banana Poriyal": "https://tse1.mm.bing.net/th?id=OIP.CBW_jxF5ZBU-zrTGn3WPzgHaLQ&pid=Api&P=0&h=180",
+                "Samosa": "https://tse1.mm.bing.net/th?id=OIP.jBHGNTQ8TlYMYwB8vqSUzgHaFS&pid=Api&P=0&h=180",
+                "Chapati": "https://tse1.mm.bing.net/th?id=OIP.jTmn5nAoQkrGUoVvLnMudQHaE8&pid=Api&P=0&h=180",
+                "Fried Rice": "https://tse4.mm.bing.net/th?id=OIP.mhTdVEySqcJ7rHyuN6_cywHaFi&pid=Api&P=0&h=180",
+                "Gobi Manchurian": "https://tse2.mm.bing.net/th?id=OIP.lIciuVfQn_EIYzoR2elb9gHaE8&pid=Api&P=0&h=180",
+                "Tinda Aloo Sabji/Aloo Patta Gobi": "https://tse3.mm.bing.net/th?id=OIP.Sg27l2lprj5k4eENwOeEWwHaEK&pid=Api&P=0&h=180",
+                "Dal Makhani": "https://tse2.mm.bing.net/th?id=OIP.c8A2uxH0NkK2xClWkcwcDwHaLH&pid=Api&P=0&h=180",
+                "Gulab Jamun": "https://tse1.mm.bing.net/th?id=OIP.jHVOWwSFJmKm4WYjoOIS0QHaFk&pid=Api&P=0&h=180",
+                "Dhokla": "https://tse3.mm.bing.net/th?id=OIP.dl-St6AkfrjkP9ggo5wDCwHaEo&pid=Api&P=0&h=180",
+                "Pasta": "https://tse3.mm.bing.net/th?id=OIP.Y_xZivLPBYwF8ndg6vGMvQHaFp&pid=Api&P=0&h=180",
+                "Onion Cucumber Raita": "https://tse2.mm.bing.net/th?id=OIP.xPGW_s5KmpDPckKqQOugtgHaJR&pid=Api&P=0&h=180",
+                "Paneer Biryani": "https://tse3.mm.bing.net/th?id=OIP.W_jE-_0a1btwW_hI9YF7iwHaHa&pid=Api&P=0&h=180",
+                "Masala Dal": "https://tse1.mm.bing.net/th?id=OIP.VhdYsb0ID__hmhY8Hd3DmwHaE8&pid=Api&P=0&h=180",
+                "Mint Lemon Juice": "https://tse3.mm.bing.net/th?id=OIP.F7jYIBsvwmGODJpbUbQGtQHaGL&pid=Api&P=0&h=180",
+                "Masala Dosa": "https://tse3.mm.bing.net/th?id=OIP.0UWnU_HJ0V1PFn8Y3DgMzQAAAA&pid=Api&P=0&h=180",
+                "Sambhar,Chutney": "https://tse4.mm.bing.net/th?id=OIP.qIZGyYIwsKve382FLOPeggHaFc&pid=Api&P=0&h=180",
+                "Chicken Biryani": "https://tse2.explicit.bing.net/th?id=OIP.CddXDKNH4yDxmSW0qgV8LgHaFC&pid=Api&P=0&h=180"
+            };
+
+            return imageUrls[foodItem] || "/images/placeholder.jpg";
+        }
+
+    </script>
+
+</body>
+
+</html>
