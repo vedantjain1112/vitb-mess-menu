@@ -1,0 +1,152 @@
+.foot {
+  margin-top: 50px;
+  background-color: #1f242d;
+  color: #fff;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerContainer h4 {
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+.footer-nav a {
+  font-size: 25px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+}
+
+.social-links a {
+  text-decoration: none;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.social-links a i {
+  font-size: 35px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.social-links a:hover {
+  transform: translateY(4px);
+}
+
+.footer-nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.footer-nav ul li {
+  margin: 0 5px;
+}
+
+.footer-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  background-color: #323946;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer-bottom h2:hover {
+  color: #0ef;
+  cursor: pointer;
+}
+
+#cpy {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+#maintain {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+#maintain a {
+  color: #fff;
+}
+
+#maintain a:hover {
+  color: #fff;
+}
+
+/* Media Queries */
+
+@media (max-width: 1400px) {
+  .foot {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .social-links a:hover {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 900px) {
+  .foot {
+    margin-top: 478px;
+  }
+  .social-links a:hover {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 768px) {
+  .social-links a:hover {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 600px) {
+  .social-links a:hover {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 450px) {
+  .foot {
+    margin-top: 120px;
+  }
+  #maintain a {
+    display: block;
+  }
+
+  .social-links a:hover {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 365px) {
+  #maintain a {
+    display: block;
+  }
+
+  .social-links a:hover {
+    transform: translateY(3px);
+  }
+
+  .social-links Link i {
+    font-size: 29px;
+    color: #fff;
+    opacity: 0.9;
+  }
+}

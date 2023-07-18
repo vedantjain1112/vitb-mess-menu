@@ -1,0 +1,97 @@
+.branches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.cse,
+.mechanical,
+.electrical {
+  flex-basis: 50%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.cse:hover {
+  transform: translateX(-5px);
+}
+
+.mechanical:hover {
+  transform: translateX(5px);
+}
+
+.electrical:hover {
+  transform: translateX(-5px);
+}
+
+.hoverEffect:hover {
+  transform: translateX(5px);
+}
+
+.button1 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #323946;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.button1:not(:last-child) {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.button1:nth-child(2n) {
+  margin-left: 10px;
+}
+
+.button1:hover {
+  background-color: #323946;
+}
+
+@media (max-width: 1200px) {
+  .branches .cse,
+  .branches .mechanical,
+  .branches .electrical {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .branches .cse,
+  .branches .mechanical,
+  .branches .electrical {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .button1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 450px) {
+  .button1 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 365px) {
+  .button1 {
+    font-size: 12px;
+  }
+}
